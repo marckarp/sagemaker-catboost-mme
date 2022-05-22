@@ -1,1 +1,1 @@
-## SageMaker Catboost Multi-Model Endpoint
+## SageMaker CatBoost Multi-Model Endpoint
