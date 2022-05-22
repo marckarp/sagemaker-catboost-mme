@@ -69,11 +69,6 @@ class ModelHandler(object):
     
     def handle(self, data, context):
         """
-        Invoke by TorchServe for prediction request.
-        Do pre-processing of data, prediction using model and postprocessing of prediciton output
-        :param data: Input data for prediction
-        :param context: Initial context contains model server system properties.
-        :return: prediction output
         """
         start = time.time()
         
