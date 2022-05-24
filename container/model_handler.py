@@ -2,17 +2,11 @@ import os
 import json
 import sys
 import logging
-import pickle
 import time
-import gzip
 import catboost
-from catboost import CatBoostClassifier, Pool as CatboostPool, cv
+from catboost import CatBoostClassifier
 import pandas as pd
 import io   
-
-#JSON_CONTENT_TYPE = 'application/json'
-#PRE_TRAINED_MODEL_NAME = 'roberta-base'
-#CLASS_NAMES = ['negative', 'neutral', 'positive']
 
 logger = logging.getLogger(__name__)
 
@@ -43,6 +37,7 @@ class ModelHandler(object):
 
     def preprocess(self, input_data):
         """
+        Pre-process the request
         """
         
         start = time.time()
@@ -53,35 +48,39 @@ class ModelHandler(object):
 
     def inference(self, inputs):
         """
+        Make the inference request against the laoded model 
         """
         start = time.time()
-        #print(inputs)
+
         predictions = self.model.predict_proba(inputs)
         print(f" perf inference {(time.time() - start) * 1000} ms")
         return predictions
-        #return inputs
+
 
     def postprocess(self, inference_output):
+        """
+        Post-process the request
+        """
+        
         start = time.time()
-        inference_output = dict(enumerate(inference_output.flatten(), 1))
+        inference_output = dict(enumerate(inference_output.flatten(), 0))
         print(f" postprocess {(time.time() - start) * 1000} ms")
         return [inference_output]
     
     def handle(self, data, context):
         """
+        Call pre-process, inference and post-process functions
+        :param data: input data
+        :param context: mms context
         """
         start = time.time()
-        
-        print(type(data))
-        
-        input_data = data[0]['body'].decode()
-        print(type(input_data))
-        df = pd.read_csv(io.StringIO(input_data))
-        print(df)
        
+        input_data = data[0]['body'].decode()
+        df = pd.read_csv(io.StringIO(input_data))
+
         model_input = self.preprocess(df)
         model_output = self.inference(model_input)
-        print(f" perf handle_in {(time.time() - start) * 1000} ms")
+ 
         return self.postprocess(model_output)
     
     
