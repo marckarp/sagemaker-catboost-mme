@@ -1,7 +1,7 @@
 ## SageMaker CatBoost Multi-Model Endpoint
 This repo depicts how to make use of a custom container to host multiple CatBoost models on a SageMaker Multi-Model-Endpoint.
 
-The `catboost-mme.ipynb` contains the steps to build and push the custom image to ECR and make inference against the Multi-Model-Endpoint.
+The `catboost-mme.ipynb` contains the steps to build and push the custom image to ECR, deploy the SageMaker Endpoint and make inference against the Multi-Model-Endpoint.
 
 The `container` folder contains the files needed for the custom image. 
 
