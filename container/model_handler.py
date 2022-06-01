@@ -31,7 +31,13 @@ class ModelHandler(object):
         print(os.system("ls {}".format(model_dir)))
 
         model_file = CatBoostClassifier()
-        self.model = model_file = model_file.load_model("{}/catboost_model.bin".format(model_dir))
+        
+        onlyfiles = [f for f in os.listdir(model_dir) if os.path.isfile(os.path.join(model_dir, f)) and f.endswith(".bin")]
+        print(f"Modelhandler:model_file location::{model_dir}:: files:bin:={onlyfiles} :: going to load the first one::")
+        #self.model = model_file = model_file.load_model("{}/catboost_model.bin".format(model_dir))
+        self.model = model_file = model_file.load_model(onlyfiles[0])
+
+
         self.initialized = True
         print(f" perf initialize {(time.time() - start) * 1000} ms")
 
