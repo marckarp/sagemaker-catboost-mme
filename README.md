@@ -32,7 +32,7 @@ Response time percentiles (approximated)
 ```
 
 Model and Overhead Latency (p99) and Invocations (Sum) - 1min:
-![metric1](https://github.com/marckarp/sagemaker-catboost-mme/blob/fce2d7eaf36ac10f2cffa147895921d162fd50bc/small-model-hot-metrics.png)
+![metric1](https://github.com/marckarp/sagemaker-catboost-mme/blob/aec7b6ff4b96065bb445d6c6f5e4c1b1bbef151c/small-model-hot-metrics.png)
 
 **2) Uncompressed 70MB model in memory test**
 *~238TPS*
@@ -47,4 +47,4 @@ Response time percentiles (approximated)
 
 ```
 Model and Overhead Latency (p99) and Invocations (Sum) - 1min:
-![metric1](https://github.com/marckarp/sagemaker-catboost-mme/blob/fce2d7eaf36ac10f2cffa147895921d162fd50bc/big-model-hot-metrics.png)
+![metric1](https://github.com/marckarp/sagemaker-catboost-mme/blob/aec7b6ff4b96065bb445d6c6f5e4c1b1bbef151c/big-model-hot-metrics.png)
