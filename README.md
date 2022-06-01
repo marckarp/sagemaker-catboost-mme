@@ -21,7 +21,7 @@ The `container` folder contains the files needed for the custom image.
 All tests conducted on a single `ml.m5.xlarge`.	
 
 **1) Uncompressed 569KB model in memory test**
-*~470TPS*
+*~460TPS*
 
 End to end:
 ```
@@ -31,5 +31,20 @@ Response time percentiles (approximated)
  custom_protocol_boto3 sagemaker_client_invoke_endpoint                                      30     32     34     35     39     43     50     56     85    280   2100 137879
 ```
 
-Model Latency (p99) and Invocations (Sum) - 1min:
+Model and Overhead Latency (p99) and Invocations (Sum) - 1min:
 ![metric1](https://github.com/marckarp/sagemaker-catboost-mme/blob/fce2d7eaf36ac10f2cffa147895921d162fd50bc/small-model-hot-metrics.png)
+
+**2) Uncompressed 70MB model in memory test**
+*~238TPS*
+
+End to end:
+
+```
+Response time percentiles (approximated)
+ Type     Name                                                                              50%    66%    75%    80%    90%    95%    98%    99%  99.9% 99.99%   100% # reqs
+--------|----------------------------------------------------------------------------|---------|------|------|------|------|------|------|------|------|------|------|------|
+ custom_protocol_boto3 sagemaker_client_invoke_endpoint                                     59     64     67     69     75     80     87     93    220    940   1000  71230
+
+```
+Model and Overhead Latency (p99) and Invocations (Sum) - 1min:
+![metric1](https://github.com/marckarp/sagemaker-catboost-mme/blob/fce2d7eaf36ac10f2cffa147895921d162fd50bc/big-model-hot-metrics.png)
