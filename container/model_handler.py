@@ -49,7 +49,7 @@ class ModelHandler(object):
         start = time.time()
         print(type(input_data))
         output= input_data
-        print(f" perf preprocess self.model {(time.time() - start) * 1000} ms")
+        print(f" perf preprocess {(time.time() - start) * 1000} ms")
         return output
 
     def inference(self, inputs):
@@ -70,7 +70,7 @@ class ModelHandler(object):
         
         start = time.time()
         inference_output = dict(enumerate(inference_output.flatten(), 0))
-        print(f" postprocess {(time.time() - start) * 1000} ms")
+        print(f" perf postprocess {(time.time() - start) * 1000} ms")
         return [inference_output]
     
     def handle(self, data, context):
@@ -86,7 +86,7 @@ class ModelHandler(object):
 
         model_input = self.preprocess(df)
         model_output = self.inference(model_input)
- 
+        print(f" perf handle in {(time.time() - start) * 1000} ms")
         return self.postprocess(model_output)
     
     
@@ -102,4 +102,3 @@ def handle(data, context):
     
     print(f" perf handle_out {(time.time() - start) * 1000} ms")
     return _service.handle(data, context)
-    
