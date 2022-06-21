@@ -50,7 +50,7 @@ Response time percentiles (approximated)
 Model and Overhead Latency (p99) and Invocations (Sum) - 1min:
 ![metric1](https://github.com/marckarp/sagemaker-catboost-mme/blob/aec7b6ff4b96065bb445d6c6f5e4c1b1bbef151c/big-model-hot-metrics.png)
 
-### Code profiling 
+### Code profiling (Big model)
 
 | Function          | Initial run time (ms) | Subsequent run time (ms)         |
 | ----------------- | --------- | -------- |
