@@ -51,13 +51,12 @@ Model and Overhead Latency (p99) and Invocations (Sum) - 1min:
 ![metric1](https://github.com/marckarp/sagemaker-catboost-mme/blob/aec7b6ff4b96065bb445d6c6f5e4c1b1bbef151c/big-model-hot-metrics.png)
 
 ### Code profiling (Big model)
-
-| Function          | Initial run time (ms) | Subsequent run time (ms)         |
-| ----------------- | --------- | -------- |
-| `perf __init__` | 0.00072   | \-       |
-| `perf initialize`   | 250.39053 | \-       |
-| `perf handle_out`  | 0.00143   | 0.00143  |
-| `perf preprocess`   | 0.00477   | 0.00572  |
-| `perf postprocess`  | 0.02265   | 0.01979  |
-| `perf inference`    | 22.87722  | 3.84974  |
-| `perf handle in`    | 35.59184  | 11.78527 |
+| Function          | Initial run time (ms) | Subsequent run time (ms) |
+| ----------------- | --------------------- | ------------------------ |
+| perf \_\_init\_\_ | 0.000953674           | \-                       |
+| perf initialize   | 258.2206726           | \-                       |
+| perf handle\_out  | 0.001907349           | 0.00166893               |
+| perf preprocess   | 0.005245209           | 0.005483627              |
+| perf inference    | 20.75648308           | 3.942251205              |
+| perf postprocess  | 0.031471252           | 0.021219254              |
+| perf handle in    | 32.42993355           | 12.28523254              |
