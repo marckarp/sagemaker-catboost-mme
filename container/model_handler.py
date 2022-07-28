@@ -102,3 +102,4 @@ def handle(data, context):
     
     print(f" perf handle_out {(time.time() - start) * 1000} ms")
     return _service.handle(data, context)
+
